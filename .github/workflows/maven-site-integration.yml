@@ -5,9 +5,13 @@ on:
     branches:
       - '**'
   schedule:
-    - cron: '0 18-23/2 * * *'   # 20:00–01:00 CET
-    - cron: '0 0-6/2 * * *'     # 02:00–08:00 CET
+    - cron: '0 18-23/2 * * *'
+    - cron: '0 0-6/2 * * *'
   workflow_dispatch:
+
+# Required so github-actions[bot] can push to gh-pages
+permissions:
+  contents: write
 
 jobs:
   build-and-test:
@@ -69,17 +73,12 @@ jobs:
       - name: Run integration tests
         run: mvn -Pintegration integration-test
 
-      - name: Generate Maven site (Javadoc, JaCoCo, PMD, Checkstyle, Surefire, Doxygen)
+      - name: Generate Maven site
         run: mvn site
 
       - name: Copy Maven site + Doxygen output into docs/ folder
         run: mvn post-site
 
-      # -----------------------------------------------------------------------
-      # Publish Maven site, Doxygen, and the landing index.html to gh-pages.
-      # The Sphinx workflow publishes separately into docs/sphinx/.
-      # keep_files: true so both workflows coexist on gh-pages.
-      # -----------------------------------------------------------------------
       - name: Deploy Maven site & Doxygen to GitHub Pages
         uses: peaceiris/actions-gh-pages@v4
         with:

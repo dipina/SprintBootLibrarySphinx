@@ -3,7 +3,11 @@ name: Build and Deploy Sphinx Docs
 on:
   push:
     branches: [main]
-  workflow_dispatch:   # manual trigger from the GitHub UI
+  workflow_dispatch:
+
+# Required so github-actions[bot] can push to gh-pages
+permissions:
+  contents: write
 
 jobs:
   sphinx:
@@ -34,8 +38,6 @@ jobs:
           cd docs-sphinx
           make html
 
-      # Deploy only the Sphinx HTML into the sphinx/ subfolder of gh-pages.
-      # keep_files: true ensures Maven Site and Doxygen output are NOT deleted.
       - name: Deploy Sphinx to GitHub Pages
         uses: peaceiris/actions-gh-pages@v4
         with:
