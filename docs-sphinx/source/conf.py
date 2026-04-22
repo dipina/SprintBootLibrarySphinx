@@ -6,7 +6,7 @@ import sys
 
 # -- Project information -----------------------------------------------------
 project = 'SpringBootLibrary'
-copyright = '2025, dipina'
+copyright = '2026, dipina'
 author = 'dipina'
 release = '0.0.1-SNAPSHOT'
 
