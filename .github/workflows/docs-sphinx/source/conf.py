@@ -14,7 +14,6 @@ extensions = [
     'sphinx.ext.napoleon',
     'myst_parser',
     'sphinx_rtd_theme',
-    'rinoh.frontend.sphinx',   # PDF builder — handles MyST Markdown natively
 ]
 
 templates_path = ['_templates']
@@ -40,17 +39,6 @@ html_theme_options = {
     'display_version': True,
     'prev_next_buttons_location': 'bottom',
 }
-
-# -- PDF output (rinohtype) --------------------------------------------------
-# Output filename: _build/rinoh/SpringBootLibrarySphinx.pdf
-rinoh_documents = [
-    {
-        'doc':    'index',
-        'target': 'SpringBootLibrarySphinx',
-        'title':  'SpringBootLibrarySphinx Documentation',
-        'author': 'dipina',
-    },
-]
 
 # -- MyST options ------------------------------------------------------------
 myst_enable_extensions = [
