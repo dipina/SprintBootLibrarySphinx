@@ -197,16 +197,18 @@
 <h1>Project Overview<a class="headerlink" href="#project-overview" title="Link to this heading"></a></h1>
 <section id="purpose">
 <h2>Purpose<a class="headerlink" href="#purpose" title="Link to this heading"></a></h2>
-<p><strong>SpringBootLibrary</strong> is an exemplary Spring Boot application developed for the <strong>SPQ (Software Process and Quality)</strong> subject. It demonstrates best practices in:</p>
+<p><strong>SpringBootLibrarySphinx</strong> is an exemplary Spring Boot application developed for the
+<strong>SPQ (Software Process and Quality)</strong> subject. It demonstrates best practices in:</p>
 <ul class="simple">
 <li><p>RESTful API design with Spring Boot</p></li>
-<li><p>Layered architecture (Controller → Service → Repository → Model)</p></li>
+<li><p>Layered MVC architecture</p></li>
 <li><p>Automated testing (unit, integration, performance)</p></li>
 <li><p>CI/CD pipelines with GitHub Actions</p></li>
 <li><p>Code quality tooling (JaCoCo, PMD, Checkstyle, JDepend)</p></li>
-<li><p>Technical documentation (Doxygen, Maven Site, Sphinx)</p></li>
+<li><p>Technical documentation (Doxygen, Maven Site, <strong>Sphinx</strong>)</p></li>
 </ul>
-<p>The application models a <strong>library borrowing system</strong> where users can borrow and return books through a shared platform.</p>
+<p>The application models a <strong>library borrowing system</strong> where users can borrow and return
+books through a shared platform.</p>
 </section>
 <section id="key-features">
 <h2>Key Features<a class="headerlink" href="#key-features" title="Link to this heading"></a></h2>
@@ -248,7 +250,7 @@
 <td><p>Docker + Docker Compose</p></td>
 </tr>
 <tr class="row-even"><td><p>Technical docs</p></td>
-<td><p>Doxygen, Maven Site, <strong>Sphinx</strong></p></td>
+<td><p>Doxygen, Maven Site, Sphinx</p></td>
 </tr>
 </tbody>
 </table>
@@ -262,59 +264,68 @@
 </tr>
 </thead>
 <tbody>
-<tr class="row-even"><td><p>This Sphinx portal</p></td>
-<td><p><code class="docutils literal notranslate"><span class="pre">https://&lt;owner&gt;.github.io/SpringBootLibrary/</span></code></p></td>
+<tr class="row-even"><td><p>Landing page</p></td>
+<td><p>https://dipina.github.io/SpringBootLibrarySphinx/</p></td>
 </tr>
-<tr class="row-odd"><td><p>Javadoc (Maven Site)</p></td>
-<td><p><code class="docutils literal notranslate"><span class="pre">https://&lt;owner&gt;.github.io/SpringBootLibrary/site/apidocs/</span></code></p></td>
+<tr class="row-odd"><td><p>This Sphinx hub</p></td>
+<td><p>https://dipina.github.io/SpringBootLibrarySphinx/sphinx/index.html</p></td>
 </tr>
-<tr class="row-even"><td><p>JaCoCo Coverage</p></td>
-<td><p><code class="docutils literal notranslate"><span class="pre">https://&lt;owner&gt;.github.io/SpringBootLibrary/site/jacoco/</span></code></p></td>
+<tr class="row-even"><td><p>Sphinx PDF</p></td>
+<td><p>https://dipina.github.io/SpringBootLibrarySphinx/sphinx/SpringBootLibrarySphinx.pdf</p></td>
 </tr>
-<tr class="row-odd"><td><p>Surefire Test Report</p></td>
-<td><p><code class="docutils literal notranslate"><span class="pre">https://&lt;owner&gt;.github.io/SpringBootLibrary/site/surefire-report.html</span></code></p></td>
+<tr class="row-odd"><td><p>Javadoc</p></td>
+<td><p>https://dipina.github.io/SpringBootLibrarySphinx/site/apidocs/index.html</p></td>
 </tr>
-<tr class="row-even"><td><p>Doxygen</p></td>
-<td><p><code class="docutils literal notranslate"><span class="pre">https://&lt;owner&gt;.github.io/SpringBootLibrary/doxygen/html/</span></code></p></td>
+<tr class="row-even"><td><p>JaCoCo coverage</p></td>
+<td><p>https://dipina.github.io/SpringBootLibrarySphinx/site/jacoco/index.html</p></td>
 </tr>
-<tr class="row-odd"><td><p>Swagger UI</p></td>
-<td><p><code class="docutils literal notranslate"><span class="pre">http://localhost:8080/swagger-ui.html</span></code> (local only)</p></td>
+<tr class="row-odd"><td><p>Surefire unit tests</p></td>
+<td><p>https://dipina.github.io/SpringBootLibrarySphinx/site/surefire-report.html</p></td>
+</tr>
+<tr class="row-even"><td><p>Performance tests</p></td>
+<td><p>https://dipina.github.io/SpringBootLibrarySphinx/site/reports/perf-report.html</p></td>
+</tr>
+<tr class="row-odd"><td><p>Checkstyle</p></td>
+<td><p>https://dipina.github.io/SpringBootLibrarySphinx/site/checkstyle.html</p></td>
+</tr>
+<tr class="row-even"><td><p>PMD</p></td>
+<td><p>https://dipina.github.io/SpringBootLibrarySphinx/site/pmd.html</p></td>
+</tr>
+<tr class="row-odd"><td><p>Doxygen</p></td>
+<td><p>https://dipina.github.io/SpringBootLibrarySphinx/doxygen/html/index.html</p></td>
+</tr>
+<tr class="row-even"><td><p>Swagger UI</p></td>
+<td><p>http://localhost:8080/swagger-ui.html (local only)</p></td>
 </tr>
 </tbody>
 </table>
-<blockquote>
-<div><p>Replace <code class="docutils literal notranslate"><span class="pre">&lt;owner&gt;</span></code> with your GitHub username or organisation name.</p>
-</div></blockquote>
 </section>
 <section id="repository-structure">
 <h2>Repository Structure<a class="headerlink" href="#repository-structure" title="Link to this heading"></a></h2>
-<div class="highlight-default notranslate"><div class="highlight"><pre><span></span>SpringBootLibrary/
-├── .github/workflows/         # GitHub Actions CI/CD pipelines
-│   ├── maven-site-integration.yml   # Build, test &amp; Maven site
-│   └── sphinx-docs.yml              # Sphinx docs → GitHub Pages ← NEW
-├── docs-sphinx/               # Sphinx documentation source ← NEW
-│   ├── source/
-│   │   ├── conf.py
-│   │   ├── index.rst
-│   │   ├── overview.md
-│   │   ├── architecture.md
-│   │   ├── getting_started.md
-│   │   ├── testing.md
-│   │   ├── reports.md
-│   │   ├── api_rest.md
-│   │   ├── javadoc_link.md
-│   │   ├── cicd.md
-│   │   ├── docker.md
-│   │   └── sphinx_101.md
-│   └── requirements.txt
-├── docs/                      # Published GitHub Pages root
-│   ├── index.html             # Portal landing page ← NEW
-│   ├── site/                  # Maven Site output
-│   └── doxygen/               # Doxygen output
-├── src/
-│   ├── main/java/com/example/library/
-│   └── test/java/com/example/library/
-├── pom.xml
+<div class="highlight-default notranslate"><div class="highlight"><pre><span></span>SpringBootLibrarySphinx/
+├── .github/workflows/
+│   ├── sphinx-docs.yml              ← Sphinx + PDF → GitHub Pages
+│   └── maven-site-integration.yml  ← Build, test, Maven site → GitHub Pages
+├── docs-sphinx/                     ← All Sphinx source files
+│   ├── index.html                   ← Landing page (committed, readable HTML)
+│   ├── Makefile                     ← Linux/macOS build
+│   ├── make.bat                     ← Windows build
+│   ├── requirements.txt             ← Python dependencies
+│   └── source/
+│       ├── conf.py
+│       ├── index.rst
+│       ├── overview.md
+│       ├── architecture.md
+│       ├── getting_started.md
+│       ├── testing.md
+│       ├── reports.md
+│       ├── api_rest.md
+│       ├── javadoc_link.md
+│       ├── cicd.md
+│       ├── docker.md
+│       └── sphinx_101.md
+├── src/                             ← Java source code
+├── pom.xml                          ← Maven build
 └── README.md
 </pre></div>
 </div>
