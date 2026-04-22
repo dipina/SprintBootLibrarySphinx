@@ -1,4 +1,4 @@
-# Library Borrowing System exemplary project for SPQ subject - test CI
+# Library Borrowing System exemplary project for SPQ subject - test CI & Sphinx
 
 ## Purpose
 
