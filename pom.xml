@@ -433,7 +433,7 @@
         <reportSets>
           <reportSet>
             <reports>
-              <report>report</report>        ← produces surefire-report.html
+              <report>report</report>
             </reports>
           </reportSet>
         </reportSets>
