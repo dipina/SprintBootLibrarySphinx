@@ -1,276 +1,163 @@
 <!DOCTYPE html>
 <html lang="en">
 <head>
-  <meta charset="UTF-8" />
-  <meta name="viewport" content="width=device-width, initial-scale=1.0" />
-  <title>SpringBootLibrary — Documentation Portal</title>
+  <meta charset="UTF-8"/>
+  <meta name="viewport" content="width=device-width, initial-scale=1.0"/>
+  <title>SpringBootLibrarySphinx &#x2014; Documentation Portal</title>
   <style>
-    :root {
-      --brand:   #2980b9;
-      --dark:    #1a252f;
-      --light-bg:#f4f7f9;
-      --card-bg: #ffffff;
-      --border:  #d0dce8;
-      --text:    #2c3e50;
-      --muted:   #6c7a89;
-      --green:   #27ae60;
-      --orange:  #e67e22;
-      --purple:  #8e44ad;
-      --teal:    #16a085;
-    }
-    * { box-sizing: border-box; margin: 0; padding: 0; }
-    body {
-      font-family: -apple-system, BlinkMacSystemFont, "Segoe UI", Roboto, sans-serif;
-      background: var(--light-bg);
-      color: var(--text);
-    }
-
-    /* ── Header ── */
-    header {
-      background: var(--dark);
-      color: #fff;
-      padding: 2.5rem 2rem 2rem;
-      text-align: center;
-    }
-    header h1 { font-size: 2.2rem; font-weight: 700; letter-spacing: -0.5px; }
-    header p  { margin-top: .6rem; color: #a8c0d6; font-size: 1.05rem; }
-    .badge {
-      display: inline-block;
-      margin-top: 1rem;
-      padding: .3rem .8rem;
-      border-radius: 20px;
-      font-size: .8rem;
-      font-weight: 600;
-      background: var(--brand);
-      color: #fff;
-      letter-spacing: .5px;
-    }
-
-    /* ── Grid ── */
-    main {
-      max-width: 1100px;
-      margin: 2.5rem auto;
-      padding: 0 1.5rem 4rem;
-    }
-    .section-title {
-      font-size: 1rem;
-      font-weight: 700;
-      text-transform: uppercase;
-      letter-spacing: 1px;
-      color: var(--muted);
-      margin: 2.5rem 0 1rem;
-      border-bottom: 2px solid var(--border);
-      padding-bottom: .4rem;
-    }
-    .grid {
-      display: grid;
-      grid-template-columns: repeat(auto-fill, minmax(280px, 1fr));
-      gap: 1.2rem;
-    }
-
-    /* ── Cards ── */
-    .card {
-      background: var(--card-bg);
-      border: 1px solid var(--border);
-      border-radius: 10px;
-      padding: 1.4rem 1.5rem;
-      text-decoration: none;
-      color: inherit;
-      display: flex;
-      flex-direction: column;
-      gap: .5rem;
-      transition: transform .15s, box-shadow .15s, border-color .15s;
-    }
-    .card:hover {
-      transform: translateY(-3px);
-      box-shadow: 0 6px 20px rgba(0,0,0,.1);
-      border-color: var(--brand);
-    }
-    .card-icon {
-      font-size: 1.8rem;
-      line-height: 1;
-    }
-    .card-title {
-      font-weight: 700;
-      font-size: 1.05rem;
-    }
-    .card-desc {
-      font-size: .88rem;
-      color: var(--muted);
-      line-height: 1.5;
-    }
-    .card-tag {
-      display: inline-block;
-      font-size: .72rem;
-      font-weight: 600;
-      padding: .15rem .55rem;
-      border-radius: 12px;
-      color: #fff;
-      align-self: flex-start;
-      margin-top: .3rem;
-    }
-
-    /* Tag colours */
-    .tag-sphinx  { background: var(--brand); }
-    .tag-java    { background: var(--orange); }
-    .tag-test    { background: var(--green); }
-    .tag-quality { background: var(--purple); }
-    .tag-perf    { background: var(--teal); }
-    .tag-doxygen { background: #c0392b; }
-
-    footer {
-      text-align: center;
-      padding: 2rem;
-      font-size: .82rem;
-      color: var(--muted);
-      border-top: 1px solid var(--border);
-    }
+    :root{--brand:#2980b9;--dark:#1a252f;--light-bg:#f4f7f9;--card-bg:#fff;
+          --border:#d0dce8;--text:#2c3e50;--muted:#6c7a89;
+          --green:#27ae60;--orange:#e67e22;--purple:#8e44ad;--teal:#16a085;}
+    *{box-sizing:border-box;margin:0;padding:0;}
+    body{font-family:-apple-system,BlinkMacSystemFont,"Segoe UI",Roboto,sans-serif;
+         background:var(--light-bg);color:var(--text);}
+    header{background:var(--dark);color:#fff;padding:2.5rem 2rem 2rem;text-align:center;}
+    header h1{font-size:2.2rem;font-weight:700;}
+    header p{margin-top:.6rem;color:#a8c0d6;font-size:1.05rem;}
+    .badge{display:inline-block;margin-top:1rem;padding:.3rem .8rem;border-radius:20px;
+           font-size:.8rem;font-weight:600;background:var(--brand);color:#fff;}
+    main{max-width:1100px;margin:2.5rem auto;padding:0 1.5rem 4rem;}
+    .section-title{font-size:1rem;font-weight:700;text-transform:uppercase;letter-spacing:1px;
+                   color:var(--muted);margin:2.5rem 0 1rem;
+                   border-bottom:2px solid var(--border);padding-bottom:.4rem;}
+    .grid{display:grid;grid-template-columns:repeat(auto-fill,minmax(280px,1fr));gap:1.2rem;}
+    .card{background:var(--card-bg);border:1px solid var(--border);border-radius:10px;
+          padding:1.4rem 1.5rem;text-decoration:none;color:inherit;
+          display:flex;flex-direction:column;gap:.5rem;
+          transition:transform .15s,box-shadow .15s,border-color .15s;}
+    .card:hover{transform:translateY(-3px);box-shadow:0 6px 20px rgba(0,0,0,.1);
+                border-color:var(--brand);}
+    .card-icon{font-size:1.8rem;line-height:1;}
+    .card-title{font-weight:700;font-size:1.05rem;}
+    .card-desc{font-size:.88rem;color:var(--muted);line-height:1.5;}
+    .card-tag{display:inline-block;font-size:.72rem;font-weight:600;padding:.15rem .55rem;
+              border-radius:12px;color:#fff;align-self:flex-start;margin-top:.3rem;}
+    .tag-sphinx{background:var(--brand);}
+    .tag-java{background:var(--orange);}
+    .tag-test{background:var(--green);}
+    .tag-quality{background:var(--purple);}
+    .tag-perf{background:var(--teal);}
+    .tag-doxygen{background:#c0392b;}
+    footer{text-align:center;padding:2rem;font-size:.82rem;
+           color:var(--muted);border-top:1px solid var(--border);}
   </style>
 </head>
 <body>
-
 <header>
-  <h1>📚 SpringBootLibrary</h1>
-  <p>Documentation Portal — SPQ subject exemplary project</p>
-  <span class="badge">Spring Boot 3.4 · Java 17 · CI/CD with GitHub Actions</span>
+  <h1>&#x1F4DA; SpringBootLibrarySphinx</h1>
+  <p>Documentation Portal &mdash; SPQ subject exemplary project</p>
+  <span class="badge">Spring Boot 3.4 &middot; Java 17 &middot; CI/CD with GitHub Actions</span>
 </header>
-
 <main>
-
-  <!-- ── Sphinx Portal ── -->
-  <p class="section-title">📖 Documentation Portal (Sphinx)</p>
+  <p class="section-title">&#x1F4D6; Sphinx Documentation Portal</p>
   <div class="grid">
-
     <a class="card" href="sphinx/index.html">
-      <span class="card-icon">🏠</span>
-      <span class="card-title">Sphinx Documentation Hub</span>
+      <span class="card-icon">&#x1F3E0;</span>
+      <span class="card-title">Sphinx Hub</span>
       <span class="card-desc">Full project portal: architecture, API reference, testing strategy, CI/CD guide, and Sphinx 101.</span>
       <span class="card-tag tag-sphinx">Sphinx</span>
     </a>
-
+    <a class="card" href="sphinx/SprintBootLibrarySphinx.pdf">
+      <span class="card-icon">&#x1F4C4;</span>
+      <span class="card-title">Documentation PDF</span>
+      <span class="card-desc">Full Sphinx documentation as a single PDF for offline reading.</span>
+      <span class="card-tag tag-sphinx">PDF</span>
+    </a>
     <a class="card" href="sphinx/sphinx_101.html">
-      <span class="card-icon">📘</span>
+      <span class="card-icon">&#x1F4D8;</span>
       <span class="card-title">Sphinx 101</span>
-      <span class="card-desc">What Sphinx is, what it's useful for, how to use it, and how to integrate it with GitHub Actions.</span>
-      <span class="card-tag tag-sphinx">Sphinx Guide</span>
+      <span class="card-desc">What Sphinx is, how to use it, and how to integrate it with GitHub Actions.</span>
+      <span class="card-tag tag-sphinx">Guide</span>
     </a>
-
     <a class="card" href="sphinx/architecture.html">
-      <span class="card-icon">🏗️</span>
-      <span class="card-title">Architecture Overview</span>
-      <span class="card-desc">MVC pattern, package structure, database design, and key architectural decisions.</span>
+      <span class="card-icon">&#x1F3D7;&#xFE0F;</span>
+      <span class="card-title">Architecture</span>
+      <span class="card-desc">MVC pattern, package structure, and key architectural decisions.</span>
       <span class="card-tag tag-sphinx">Sphinx</span>
     </a>
-
     <a class="card" href="sphinx/cicd.html">
-      <span class="card-icon">🚀</span>
+      <span class="card-icon">&#x1F680;</span>
       <span class="card-title">CI/CD Guide</span>
-      <span class="card-desc">GitHub Actions workflows explained: Maven site, Sphinx deployment, and GitHub Pages setup.</span>
+      <span class="card-desc">GitHub Actions workflows explained in full detail.</span>
       <span class="card-tag tag-sphinx">Sphinx</span>
     </a>
-
   </div>
-
-  <!-- ── Java API Reference ── -->
-  <p class="section-title">🔌 Java API Reference</p>
+  <p class="section-title">&#x1F50C; Java API Reference</p>
   <div class="grid">
-
     <a class="card" href="site/apidocs/index.html">
-      <span class="card-icon">☕</span>
+      <span class="card-icon">&#x2615;</span>
       <span class="card-title">Javadoc</span>
-      <span class="card-desc">Standard Java API reference for all public classes, methods, and fields. Generated by maven-javadoc-plugin.</span>
+      <span class="card-desc">Standard Java API reference for all public classes, methods, and fields.</span>
       <span class="card-tag tag-java">Javadoc</span>
     </a>
-
     <a class="card" href="doxygen/html/index.html">
-      <span class="card-icon">🔬</span>
-      <span class="card-title">Doxygen Reference</span>
-      <span class="card-desc">Cross-referenced HTML with call graphs and class hierarchies. Includes richly documented classes: BorrowingController, BookService, Borrowing.</span>
+      <span class="card-icon">&#x1F52C;</span>
+      <span class="card-title">Doxygen</span>
+      <span class="card-desc">Cross-referenced HTML with call graphs and class hierarchies.</span>
       <span class="card-tag tag-doxygen">Doxygen</span>
     </a>
-
   </div>
-
-  <!-- ── Test Reports ── -->
-  <p class="section-title">🧪 Test Reports</p>
+  <p class="section-title">&#x1F9EA; Test Reports</p>
   <div class="grid">
-
     <a class="card" href="site/jacoco/index.html">
-      <span class="card-icon">📊</span>
+      <span class="card-icon">&#x1F4CA;</span>
       <span class="card-title">JaCoCo Coverage</span>
-      <span class="card-desc">Line, branch, and method coverage report. Minimum threshold enforced: 25 % line coverage.</span>
+      <span class="card-desc">Line, branch, and method coverage. Minimum threshold: 25% line coverage.</span>
       <span class="card-tag tag-test">JaCoCo</span>
     </a>
-
-    <a class="card" href="site/surefire-report.html">
-      <span class="card-icon">✅</span>
-      <span class="card-title">Surefire — Unit Tests</span>
-      <span class="card-desc">Pass / fail / skipped results for every JUnit 5 unit test case, with execution times.</span>
+    <a class="card" href="site/surefire.html">
+      <span class="card-icon">&#x2705;</span>
+      <span class="card-title">Surefire &mdash; Unit Tests</span>
+      <span class="card-desc">Pass / fail / skipped for every JUnit 5 test case with execution times.</span>
       <span class="card-tag tag-test">Surefire</span>
     </a>
-
     <a class="card" href="site/reports/perf-report.html">
-      <span class="card-icon">⚡</span>
+      <span class="card-icon">&#x26A1;</span>
       <span class="card-title">Performance Tests</span>
-      <span class="card-desc">JUnitPerf throughput and latency results. Generated with the `performance` Maven profile.</span>
+      <span class="card-desc">JUnitPerf throughput and latency results (performance Maven profile).</span>
       <span class="card-tag tag-perf">JUnitPerf</span>
     </a>
-
   </div>
-
-  <!-- ── Code Quality ── -->
-  <p class="section-title">🔍 Code Quality Reports</p>
+  <p class="section-title">&#x1F50D; Code Quality</p>
   <div class="grid">
-
     <a class="card" href="site/checkstyle.html">
-      <span class="card-icon">📏</span>
+      <span class="card-icon">&#x1F4CF;</span>
       <span class="card-title">Checkstyle</span>
-      <span class="card-desc">Code style conformance report. Validates formatting, naming conventions, and structural rules.</span>
+      <span class="card-desc">Code style conformance: formatting, naming conventions, structural rules.</span>
       <span class="card-tag tag-quality">Checkstyle</span>
     </a>
-
     <a class="card" href="site/pmd.html">
-      <span class="card-icon">🐛</span>
-      <span class="card-title">PMD — Static Analysis</span>
-      <span class="card-desc">Detects unused variables, empty catch blocks, overly complex methods, and other code smells.</span>
+      <span class="card-icon">&#x1F41B;</span>
+      <span class="card-title">PMD</span>
+      <span class="card-desc">Unused variables, empty catch blocks, overly complex methods.</span>
       <span class="card-tag tag-quality">PMD</span>
     </a>
-
     <a class="card" href="site/cpd.html">
-      <span class="card-icon">📋</span>
-      <span class="card-title">CPD — Copy-Paste Detector</span>
-      <span class="card-desc">Identifies duplicated code blocks across the entire codebase.</span>
-      <span class="card-tag tag-quality">PMD/CPD</span>
+      <span class="card-icon">&#x1F4CB;</span>
+      <span class="card-title">CPD &mdash; Copy-Paste Detector</span>
+      <span class="card-desc">Identifies duplicated code blocks across the codebase.</span>
+      <span class="card-tag tag-quality">CPD</span>
     </a>
-
     <a class="card" href="site/jdepend-report.html">
-      <span class="card-icon">📐</span>
-      <span class="card-title">JDepend — Package Metrics</span>
-      <span class="card-desc">Coupling, cohesion, and instability metrics at the package level. Useful for spotting architectural drift.</span>
+      <span class="card-icon">&#x1F4D0;</span>
+      <span class="card-title">JDepend</span>
+      <span class="card-desc">Coupling, cohesion, and instability metrics at the package level.</span>
       <span class="card-tag tag-quality">JDepend</span>
     </a>
-
   </div>
-
-  <!-- ── Full Maven Site ── -->
-  <p class="section-title">🗂️ Full Maven Site</p>
+  <p class="section-title">&#x1F5C2;&#xFE0F; Full Maven Site</p>
   <div class="grid">
-
     <a class="card" href="site/index.html">
-      <span class="card-icon">📑</span>
-      <span class="card-title">Maven Site (complete)</span>
-      <span class="card-desc">Complete Maven-generated site with all plugins, project info, dependency reports, and more.</span>
+      <span class="card-icon">&#x1F4D1;</span>
+      <span class="card-title">Maven Site</span>
+      <span class="card-desc">Complete Maven-generated site with all plugins, project info, and dependency reports.</span>
       <span class="card-tag tag-java">Maven</span>
     </a>
-
   </div>
-
 </main>
-
 <footer>
-  SpringBootLibrary · SPQ subject · Generated by GitHub Actions ·
+  SpringBootLibrarySphinx &middot; SPQ subject &middot; Generated by GitHub Actions &middot;
   <a href="https://github.com/dipina/SpringBootLibrary" style="color:var(--brand)">GitHub Repository</a>
 </footer>
-
 </body>
 </html>
