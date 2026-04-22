@@ -5,9 +5,11 @@ on:
     branches: [main]
   workflow_dispatch:
 
-# Required so github-actions[bot] can push to gh-pages
 permissions:
   contents: write
+
+env:
+  FORCE_JAVASCRIPT_ACTIONS_TO_NODE24: true
 
 jobs:
   sphinx:
@@ -45,3 +47,4 @@ jobs:
           publish_dir: ./docs-sphinx/_build/html
           destination_dir: sphinx
           keep_files: true
+          enable_jekyll: false        # writes .nojekyll to gh-pages root

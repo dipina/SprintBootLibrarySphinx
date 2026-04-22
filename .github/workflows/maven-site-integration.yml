@@ -9,9 +9,11 @@ on:
     - cron: '0 0-6/2 * * *'
   workflow_dispatch:
 
-# Required so github-actions[bot] can push to gh-pages
 permissions:
   contents: write
+
+env:
+  FORCE_JAVASCRIPT_ACTIONS_TO_NODE24: true
 
 jobs:
   build-and-test:
@@ -86,3 +88,4 @@ jobs:
           publish_dir: ./docs
           destination_dir: .
           keep_files: true
+          enable_jekyll: false        # writes .nojekyll to gh-pages root
