@@ -1,0 +1,213 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>User Profile</title>
+    <link rel="stylesheet" href="styles.css">
+    <script defer src="scripts.js"></script>
+</head>
+<body>
+    <div class="navbar">
+        <span id="usernameDisplay">Welcome, <span id="displayUsername">User</span></span>
+        <button id="backToCatalogue" onclick="goToCatalogue()">Back to Catalogue</button>
+        <button id="logoutButton" onclick="logout()">Logout</button>
+    </div>
+
+    <h2>User Profile</h2>
+
+    <!-- User details section -->
+    <div id="userDetails">
+        <p><strong>Username:</strong> <span id="profileUsername">Loading...</span></p>
+        <p><strong>Full Name:</strong> <span id="profileFullName">Loading...</span></p>
+        <p><strong>Email:</strong> <span id="profileEmail">Loading...</span></p>
+    </div>
+
+    <h3 id="borrowerHeader">Borrowed Books</h3>
+    <table id="borrowedBooksTable">
+        <thead>
+            <tr>
+                <th>Title</th>
+                <th>Author</th>
+                <th>Borrow date</th>
+                <th>Return date</th>
+            </tr>
+        </thead>
+        <tbody id="borrowedBooksList"></tbody>
+    </table>
+
+
+    <script>
+        function updateUsernameDisplay() {
+            const loggedInUsername = localStorage.getItem("username");
+            const borrowerUsername = getQueryParam("borrower") || loggedInUsername;
+
+            if (loggedInUsername) {
+                document.getElementById("displayUsername").textContent = loggedInUsername;
+            }
+
+            if (borrowerUsername) {
+                document.getElementById("borrowerHeader").textContent = "Borrowed Books by " + borrowerUsername;
+                loadUserProfile(borrowerUsername);
+            }
+        }
+
+        function getQueryParam(param) {
+            const urlParams = new URLSearchParams(window.location.search);
+            return urlParams.get(param);
+        }
+
+        function goToCatalogue() {
+            window.location.href = 'catalogue.html';
+        }
+
+        function logout() {
+            localStorage.removeItem("username");
+            window.location.href = 'index.html';
+        }
+
+        function loadUserProfile(username) {
+            fetch(`http://localhost:8080/api/library/users/byname/${username}`)
+                .then(response => {
+                    if (!response.ok) {
+                        throw new Error("Failed to fetch user profile.");
+                    }
+                    return response.json();
+                })
+                .then(user => {
+                    document.getElementById("profileUsername").textContent = user.username;
+                    document.getElementById("profileFullName").textContent = user.fullName;
+                    document.getElementById("profileEmail").textContent = user.email;
+                })
+                .catch(error => {
+                    console.error("Error loading user profile:", error);
+                    document.getElementById("userDetails").innerHTML = "<p>Error loading user details.</p>";
+                });
+        }
+
+        /*
+        function loadUserBorrowedBooks() {
+            const borrower = getQueryParam("borrower") || localStorage.getItem("username");
+            if (!borrower) {
+                console.error("No username found for fetching borrowed books.");
+                return;
+            }
+            fetch(`http://localhost:8080/api/library/users/${borrower}/borrowed-books`)
+                .then(response => {
+                    if (!response.ok) {
+                        throw new Error("Failed to fetch borrowed books.");
+                    }
+                    return response.json();
+                })
+                .then(books => {
+                    const bookList = document.getElementById("borrowedBooksList");
+                    bookList.innerHTML = "";
+
+                    if (books.length === 0) {
+                        bookList.innerHTML = "<li>No borrowed books.</li>";
+                        return;
+                    }
+
+                    books.forEach(book => {
+                        const listItem = document.createElement("li");
+                        listItem.textContent = `${book.title} by ${book.author}`;
+                        bookList.appendChild(listItem);
+                    });
+                })
+                .catch(error => console.error("Error loading borrowed books:", error));
+        }
+        */
+
+        /*
+        function loadUserBorrowedBooks() {
+            const borrower = getQueryParam("borrower") || localStorage.getItem("username");
+            if (!borrower) {
+                console.error("No username found for fetching borrowed books.");
+                return;
+            }
+
+            fetch(`http://localhost:8080/api/library/users/${borrower}/borrowed-books`)
+                .then(response => {
+                    if (!response.ok) {
+                        throw new Error("Failed to fetch borrowed books.");
+                    }
+                    return response.json();
+                })
+                .then(books => {
+                    const bookTableBody = document.getElementById("borrowedBooksList");
+                    bookTableBody.innerHTML = "";
+
+                    if (books.length === 0) {
+                        bookTableBody.innerHTML = "<tr><td colspan='3'>No borrowed books.</td></tr>";
+                        return;
+                    }
+                    books.forEach(book => {
+                        console.log(book);
+                        const row = document.createElement("tr");
+
+                        row.innerHTML = `
+                            <td>${book.title}</td>
+                            <td>${book.author}</td>
+                            <td>${book.borrowDate ? book.borrowDate : "N/A"}</td>
+                        `;
+
+                        bookTableBody.appendChild(row);
+                    });
+                })
+                .catch(error => console.error("Error loading borrowed books:", error));
+        }
+        */
+
+        function loadUserBorrowedBooks() {
+            const borrower = getQueryParam("borrower") || localStorage.getItem("username");
+            if (!borrower) {
+                console.error("No username found for fetching borrowed books.");
+                return;
+            }
+
+            fetch(`http://localhost:8080/api/library/users/${borrower}/borrowed-books`)
+                .then(response => {
+                    if (!response.ok) {
+                        throw new Error("Failed to fetch borrowed books.");
+                    }
+                    return response.json();
+                })
+                .then(books => {
+                    const bookTableBody = document.getElementById("borrowedBooksList");
+                    bookTableBody.innerHTML = ""; // Clear existing rows
+
+                    if (books.length === 0) {
+                        bookTableBody.innerHTML = "<tr><td colspan='4'>No borrowed books.</td></tr>";
+                        return;
+                    }
+
+                    books.forEach(book => {
+                        const row = document.createElement("tr");
+
+                        // Check if the logged-in user is the borrower
+                        const userId = localStorage.getItem("userId");
+                        const isOwnedByUser = book.borrower && book.borrower.id == userId;
+
+                        row.innerHTML = `
+                            <td>${book.title}</td>
+                            <td>${book.author}</td>
+                            <td>${book.borrowDate ? book.borrowDate : "N/A"}</td>
+                            <td>${book.returnDate ? book.returnDate : "N/A"}</td>
+                        `;
+
+                        bookTableBody.appendChild(row);
+                    });
+                })
+                .catch(error => console.error("Error loading borrowed books:", error));
+        }
+
+
+
+        // Ensure functions run on page load
+        document.addEventListener("DOMContentLoaded", () => {
+            updateUsernameDisplay();
+            loadUserBorrowedBooks();
+        });
+    </script>
+</body>
+</html>

@@ -1,0 +1,53 @@
+<!-- catalogue.html - Library Book List Page -->
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Catalogue</title>
+    <link rel="stylesheet" href="styles.css">
+    <script defer src="scripts.js"></script>
+</head>
+<body>
+    <div class="navbar">
+        <span id="usernameDisplay">Welcome, <span id="displayUsername">User</span></span>
+        <button id="logoutButton">Logout</button>
+    </div>
+    <h2>Book Catalogue</h2>
+    <form id="addBookForm">
+        <input type="text" id="title" placeholder="Title" required>
+        <input type="text" id="author" placeholder="Author" required>
+        <button id="addBookButton" type="submit">Add Book</button>
+    </form>
+    <table>
+        <thead>
+            <tr>
+                <th>Title</th>
+                <th>Author</th>
+                <th>Borrowed By</th>
+                <th>Actions</th>
+            </tr>
+        </thead>
+        <tbody id="bookList"></tbody>
+    </table>
+
+    <script>
+        function updateUsernameDisplay() {
+            const username = localStorage.getItem("username");
+            if (username) {
+                document.getElementById("displayUsername").textContent = username;
+            }
+        }
+
+        function logout() {
+            localStorage.removeItem("username");
+            localStorage.removeItem("userId");
+            window.location.href = 'index.html';
+        }
+
+        document.getElementById("logoutButton").addEventListener("click", logout);
+
+        updateUsernameDisplay();
+    </script>
+</body>
+</html>
