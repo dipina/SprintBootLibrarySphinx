@@ -81,6 +81,10 @@ jobs:
       - name: Copy Maven site + Doxygen output into docs/ folder
         run: mvn post-site
 
+      # Ensure .nojekyll is always present in docs/ before deploying
+      - name: Ensure .nojekyll exists
+        run: touch docs/.nojekyll
+
       - name: Deploy Maven site & Doxygen to GitHub Pages
         uses: peaceiris/actions-gh-pages@v4
         with:
@@ -88,4 +92,4 @@ jobs:
           publish_dir: ./docs
           destination_dir: .
           keep_files: true
-          enable_jekyll: false        # writes .nojekyll to gh-pages root
+          enable_jekyll: false

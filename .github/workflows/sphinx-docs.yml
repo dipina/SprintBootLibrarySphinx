@@ -40,11 +40,23 @@ jobs:
           cd docs-sphinx
           make html
 
-      - name: Deploy Sphinx to GitHub Pages
+      # Assemble a deploy/ staging directory:
+      #   deploy/             → becomes gh-pages root
+      #   deploy/.nojekyll    → disables Jekyll
+      #   deploy/index.html   → landing page / redirect
+      #   deploy/sphinx/      → full Sphinx site
+      - name: Assemble deployment directory
+        run: |
+          mkdir -p deploy/sphinx
+          touch deploy/.nojekyll
+          cp docs/index.html deploy/index.html
+          cp -r docs-sphinx/_build/html/. deploy/sphinx/
+
+      - name: Deploy to GitHub Pages
         uses: peaceiris/actions-gh-pages@v4
         with:
           github_token: ${{ secrets.GITHUB_TOKEN }}
-          publish_dir: ./docs-sphinx/_build/html
-          destination_dir: sphinx
+          publish_dir: ./deploy
+          destination_dir: .
           keep_files: true
-          enable_jekyll: false        # writes .nojekyll to gh-pages root
+          enable_jekyll: false
