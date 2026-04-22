@@ -1,0 +1,6 @@
+com.example.restapi
+com.example.restapi.config
+com.example.restapi.controller
+com.example.restapi.model
+com.example.restapi.repository
+com.example.restapi.service
