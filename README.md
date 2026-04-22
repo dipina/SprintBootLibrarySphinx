@@ -317,4 +317,19 @@ If you've changed the Dockerfile, dependencies, or environment configurations.
 docker-compose up --build
 ```
 
+Documentation in PDF
+```
+cd docs-sphinx
+
+# Install rst2pdf (one time)
+pip install rst2pdf
+
+# Build the PDF
+sphinx-build -b pdf source _build/pdf
+
+# The PDF is at:
+# docs-sphinx\_build\pdf\SprintBootLibrarySphinx.pdf
+```
+
+
 Further documentation available at [docker_essentials_with_compose.md](https://github.com/dipina/SprintBootLibrarySphinx/blob/main/docker_essentials_with_compose.md) document
