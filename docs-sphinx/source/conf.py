@@ -1,11 +1,8 @@
 # Configuration file for the Sphinx documentation builder.
-# SpringBootLibrary - docs-sphinx/source/conf.py
-
-import os
-import sys
+# SpringBootLibrarySphinx — docs-sphinx/source/conf.py
 
 # -- Project information -----------------------------------------------------
-project = 'SpringBootLibrary'
+project = 'SpringBootLibrarySphinx'
 copyright = '2026, dipina'
 author = 'dipina'
 release = '0.0.1-SNAPSHOT'
@@ -15,7 +12,7 @@ extensions = [
     'sphinx.ext.autodoc',
     'sphinx.ext.viewcode',
     'sphinx.ext.napoleon',
-    'myst_parser',          # Markdown support
+    'myst_parser',
     'sphinx_rtd_theme',
 ]
 
@@ -25,15 +22,13 @@ exclude_patterns = []
 # Support both .rst and .md source files
 source_suffix = {
     '.rst': 'restructuredtext',
-    '.md': 'markdown',
+    '.md':  'markdown',
 }
 
-# -- Options for HTML output -------------------------------------------------
+# -- HTML output -------------------------------------------------------------
 html_theme = 'sphinx_rtd_theme'
 html_static_path = ['_static']
-html_title = 'SpringBootLibrary Documentation'
-html_logo = None
-html_favicon = None
+html_title = 'SpringBootLibrarySphinx Documentation'
 
 html_theme_options = {
     'navigation_depth': 4,
@@ -45,9 +40,9 @@ html_theme_options = {
     'prev_next_buttons_location': 'bottom',
 }
 
-# -- MyST options (Markdown parser) ------------------------------------------
+# -- MyST options ------------------------------------------------------------
 myst_enable_extensions = [
-    "colon_fence",
-    "deflist",
-    "tasklist",
+    'colon_fence',
+    'deflist',
+    'tasklist',
 ]
