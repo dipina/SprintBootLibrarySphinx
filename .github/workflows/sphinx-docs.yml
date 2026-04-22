@@ -40,36 +40,35 @@ jobs:
           cd docs-sphinx
           make html
 
-      # PDF: WeasyPrint converts the already-built Sphinx HTML to PDF.
-      # No Sphinx PDF builder needed — avoids rst2pdf/rinohtype compatibility issues.
-      - name: Install WeasyPrint
+      # Install WeasyPrint + BeautifulSoup4 for the PDF build script.
+      # WeasyPrint needs Pango for font rendering on Ubuntu.
+      - name: Install PDF dependencies
         run: |
           sudo apt-get install -y libpango-1.0-0 libpangoft2-1.0-0
-          pip install weasyprint
+          pip install weasyprint beautifulsoup4
 
-      - name: Build PDF from Sphinx HTML
-        run: |
-          weasyprint \
-            docs-sphinx/_build/html/index.html \
-            docs-sphinx/_build/SpringBootLibrarySphinx.pdf \
-            --base-url docs-sphinx/_build/html/
+      # build_pdf.py reads all Sphinx HTML pages in toctree order,
+      # concatenates them into one document, and renders a multi-page
+      # PDF with internal hyperlinks and page numbers.
+      - name: Build multi-page PDF
+        run: python3 docs-sphinx/build_pdf.py
 
       - name: Assemble deployment directory
         run: |
           mkdir -p deploy/sphinx
-
-          # Disable Jekyll on GitHub Pages
           touch deploy/.nojekyll
 
-          # Landing page — committed at docs-sphinx/index.html, easy to read and edit
+          # Landing page — plain committed HTML, easy to read and edit
           cp docs-sphinx/index.html deploy/index.html
 
           # Sphinx HTML portal
           cp -r docs-sphinx/_build/html/. deploy/sphinx/
 
-          # Sphinx PDF
+          # Multi-page PDF (all chapters, internal links, page numbers)
           cp docs-sphinx/_build/SpringBootLibrarySphinx.pdf \
              deploy/sphinx/SpringBootLibrarySphinx.pdf
+
+          echo "PDF size: $(du -sh deploy/sphinx/SpringBootLibrarySphinx.pdf)"
 
       - name: Deploy to GitHub Pages
         uses: peaceiris/actions-gh-pages@v4
