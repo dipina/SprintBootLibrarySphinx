@@ -85,11 +85,14 @@ jobs:
       - name: Ensure .nojekyll exists
         run: touch docs/.nojekyll
 
-      - name: Deploy Maven site & Doxygen to GitHub Pages
-        uses: peaceiris/actions-gh-pages@v4
+      - name: Ensure Maven does not overwrite the landing page
+        run: rm -f docs/index.html
+
+      - uses: peaceiris/actions-gh-pages@v4
         with:
           github_token: ${{ secrets.GITHUB_TOKEN }}
           publish_dir: ./docs
           destination_dir: .
           keep_files: true
           enable_jekyll: false
+
