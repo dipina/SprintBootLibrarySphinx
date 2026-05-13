@@ -1,15 +1,23 @@
 name: Deploy to Render
 
 on:
-  push:
+  workflow_run:
+    workflows:
+      - Build and Deploy Sphinx Docs
+    types:
+      - completed
     branches:
       - main
   workflow_dispatch:
 
 jobs:
-  test-and-deploy:
-    name: Test and deploy to Render
+  deploy-render:
+    name: Deploy Spring Boot application to Render
     runs-on: ubuntu-latest
+
+    if: >
+      github.event_name == 'workflow_dispatch' ||
+      github.event.workflow_run.conclusion == 'success'
 
     steps:
       - name: Checkout repository
@@ -30,4 +38,6 @@ jobs:
 
       - name: Trigger Render deployment
         run: |
-          curl -X POST "${{ secrets.RENDER_DEPLOY_HOOK }}"
+          curl --fail --request POST "${{ secrets.RENDER_DEPLOY_HOOK }}"
+
+          
