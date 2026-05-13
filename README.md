@@ -13,9 +13,8 @@ The project is implemented with:
 - **Docker**
 - **Sphinx documentation**
 - **GitHub Actions**
-- **Render cloud deployment**
 - **Aiven cloud MySQL**
-
+- **Render cloud deployment**
 ---
 
 ## Documentation
