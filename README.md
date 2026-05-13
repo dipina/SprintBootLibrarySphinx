@@ -45,7 +45,7 @@ The application follows the **MVC (Model-View-Controller)** pattern:
 - **View** — static frontend in HTML, JavaScript, and CSS
 - **Controller** — REST endpoints handling HTTP requests
 - **Service** — business logic
-- **Repository** — Spring Data JPA access to MySQL
+- **Repository** — Spring Data JPA access to MySQL.
 
 ### Main source folders
 
