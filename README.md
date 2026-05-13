@@ -331,7 +331,7 @@ has been blocked by CORS policy
 
 ## What is Aiven?
 
-Aiven is a cloud platform for managed open-source data services. In this project it is used to host a **managed MySQL database** in the cloud.
+[Aiven](https://aiven.io/) is a cloud platform for managed open-source data services. In this project it is used to host a **managed MySQL database** in the cloud.
 
 Using Aiven avoids the need to run a MySQL container in Render. This is important because free container platforms are usually designed to run the web application, not to provide durable database storage inside the same container.
 
@@ -487,7 +487,7 @@ and type the password interactively.
 
 ## What is Render?
 
-Render is a cloud platform that can build and run web services directly from a GitHub repository. This project can be deployed to Render using its existing `Dockerfile`.
+[Render](https://render.com/) is a cloud platform that can build and run web services directly from a GitHub repository. This project can be deployed to Render using its existing `Dockerfile`.
 
 The local `docker-compose.yml` is useful for local development, but Render should deploy only the Spring Boot container. The database should be external, for example on Aiven.
 
