@@ -1,4 +1,5 @@
-const apiBaseUrl = "http://localhost:8080/api/library";
+//const apiBaseUrl = "http://localhost:8080/api/library";
+const apiBaseUrl = "/api/library";
 
 document.addEventListener("DOMContentLoaded", function () {
     const loggedInUser = localStorage.getItem("username");
